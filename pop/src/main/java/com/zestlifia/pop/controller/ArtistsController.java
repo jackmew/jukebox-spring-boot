@@ -1,7 +1,6 @@
-package com.zestlifia.metal.controller;
+package com.zestlifia.pop.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +14,7 @@ import java.util.stream.Stream;
 @RestController
 public class ArtistsController {
 
-    private final List<String> artists = Stream.of("Motörhead", "Metallica")
+    private final List<String> artists = Stream.of("Lady Gaga", "Madonna")
             .collect(Collectors.toList());
 
     private final Environment env;
@@ -27,7 +26,7 @@ public class ArtistsController {
 
     @GetMapping("/")
     String metal() {
-        return "metal";
+        return "pop";
     }
 
     @GetMapping("/artists")
