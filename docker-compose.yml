@@ -1,0 +1,39 @@
+version: '2.2'
+services:
+  metal:
+    image: zestlifia/metal:latest
+    container_name: metal
+    hostname: metal
+    ports:
+      - 8081:8081
+  
+  pop:
+    image: zestlifia/pop:latest
+    container_name: pop
+    hostname: pop
+    # depends_on:
+    #   - zookeeper
+    # network_mode: host  
+    ports:
+      - 8082:8082
+    environment:
+      PORT: 8082
+    # volumes:
+    #   - /data/kafka/log:/var/lib/kafka/log
+
+  jukebox:
+    image: zestlifia/jukebox:latest
+    container_name: jukebox
+    hostname: jukebox
+    depends_on:
+      - metal
+      - pop
+    # network_mode: host  
+    ports:
+      - 8083:8083
+    environment:
+      PORT: 8083
+      METAL_HOST: metal:8081
+      POP_HOST: pop:8082
+    # volumes:
+    #   - /data/kafka/log:/var/lib/kafka/log

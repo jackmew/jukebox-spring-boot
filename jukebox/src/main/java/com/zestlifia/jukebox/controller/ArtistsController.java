@@ -17,8 +17,8 @@ public class ArtistsController {
 
     private final Environment env;
     private final RestTemplate restTemplate;
-    String metal_host = "localhost:8081";
-    String pop_host = "localhost:8082";
+    String metal_host = "127.0.0.1:8081";
+    String pop_host = "127.0.0.1:8082";
 
     public ArtistsController(Environment env) {
         this.env = env;
